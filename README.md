@@ -19,7 +19,7 @@ Siga os passos abaixo para configurar o ambiente e executar o projeto localmente
 ### 1. Clonar o Repositório
 
 ````
-git clone https://github.com/seu-usuario/Flask-database.git
+git clone https://github.com/m4n1nh0/Flask-database.git
 cd Flask-database
 ````
 ### 2. Criar e Ativar um Ambiente Virtual
