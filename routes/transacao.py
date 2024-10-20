@@ -5,7 +5,7 @@ from model.transacao import Transacao
 
 
 def register_routes(app):
-    @app.route('/transacao', methods=['POST'])
+    @app.route('/cadastrar/transacao', methods=['POST'])
     def criar_transacao():
         data = request.get_json()
 
@@ -20,3 +20,31 @@ def register_routes(app):
         db.session.commit()
 
         return jsonify({'mensagem': 'Transacao realizada'}), 200
+
+    @app.route('/listar/transacao', methods=['GET'])
+    def listar_transacao():
+        transacoes = Transacao.query.all()
+
+        # # Modo implicito
+        # resultado = [{
+        #         'id': transacao.id,
+        #         'conta': transacao.conta,
+        #         'agencia': transacao.agencia,
+        #         'texto': transacao.texto,
+        #         'valor': transacao.valor
+        #     } for transacao in transacoes
+        # ]
+
+        # Modo tradicional
+        resultados = []
+        for transacao in transacoes:
+            result = {
+                'id': transacao.id,
+                'conta': transacao.conta,
+                'agencia': transacao.agencia,
+                'texto': transacao.texto,
+                'valor': transacao.valor
+            }
+            resultados.append(result)
+
+        return jsonify(resultados), 200
