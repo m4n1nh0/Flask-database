@@ -1,7 +1,6 @@
 from flask import Flask
 
 from database.sessao import db
-from routes.produto import register_routes_prod
 from routes.transacao import register_routes
 from settings.config import Config
 
@@ -16,6 +15,5 @@ def create_app():
         db.create_all() #Criar todas as tabelas
 
     register_routes(app)
-    register_routes_prod(app)
 
     return app
